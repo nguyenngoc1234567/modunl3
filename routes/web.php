@@ -81,6 +81,13 @@ Route::post('/tudien', function (Request $request) {
                 echo  $value;
                 echo "<br/>";
                 $flag = 1;
+                break;
+            }
+            else if($searchWord == $value){
+                echo  $key;
+                $flag = 1;
+                break;
+
             }
         }
         if ($flag == 0) {
