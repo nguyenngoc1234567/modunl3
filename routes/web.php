@@ -59,3 +59,32 @@ Route::post('/xu_ly_calulation', function (Request $request) {
     $Discount_Amount = (int)$list_price * (int)$discount_percent * 0.1;
     echo $Discount_Amount;
  });
+
+//hiện thi form từ điển 
+Route::get('/tudien', function () {
+    return view('dich');
+});
+Route::post('/tudien', function (Request $request) {
+    $tudien = $request->input('tudien');
+    $tudien = [
+        "hello" => "xin chào",
+        "love"  => "yêu",
+        "book"  => "quyển sách",
+        "dog"   => "con chó",
+        "cat"   => "con mèo",
+        "school"=> "trường học"
+    ];
+    $searchWord = $_POST["tudien"];
+        $flag = 0;
+        foreach ($tudien as $key => $value) {
+            if ($key == $searchWord) {
+                echo  $value;
+                echo "<br/>";
+                $flag = 1;
+            }
+        }
+        if ($flag == 0) {
+            echo "Không tìm thấy từ cần tra.";
+        }
+   
+    });
